@@ -193,10 +193,10 @@ Het bestand `index.php' is de overzichtspagina van de posts. `page.php' wordt ge
 \subsection*{Header.php, footer.php en sidebar.php}
 `Header.php' bevat het begin van je pagina en wordt op ieder onderdeel van je WordPress site gebruikt. Voor `footer.php' geldt hetzelfde maar bevat het einde van je pagina.
 
-\noindent Minimale header.php:
+\noindent Voorbeeld van header.php:
 \lstinputlisting{code/header.php}
 
-\noindent Minimale sidebar.php:
+\noindent Voorbeeld van een sidebar.php:
 \lstinputlisting{code/sidebar.php}
 
 \noindent Minimale footer.php:
@@ -211,15 +211,54 @@ In `functions.php' kun je indien nodig code plaatsen die je vanuit je theme wilt
 \subsection*{screenshot.png}
 Screenshot.png bevat een screenshot van je theme. Deze wordt getoond in het admin gedeelte van de site.
 
+\subsection*{Links naar images in HTML}
+Met een plaatje in de `images' map van je theme:
+
+\begin{lstlisting}[language=HTML]
+<img width="80" height="120" src="<?php bloginfo('template_directory'); ?>/images/logoNoText.svg" />
+\end{lstlisting}
+
 \subsection*{Links naar images in css}
+Met een plaatje in de `images' map van je theme:
 
-\subsection*{Links naar images in html}
+\begin{lstlisting}
+.myFancyElement {
+	background-image: url('/images/logo.png');
+}
+\end{lstlisting}
 
-\subsection*{Menus}
+\subsection*{Menu's}
+Menu's registreer je in je `functions.php':
+\begin{lstlisting}[language=HTML]
+register_nav_menu( "hoofdmenu", "Het hoofdmenu" );
+\end{lstlisting}
+
+En op de plaats waar je het menu wilt gebruiken:
+\begin{lstlisting}[language=HTML]
+$opties = array( 
+	'container_class' => 'menu', 
+	'theme_location' => 'hoofdmenu' 
+);
+wp_nav_menu( $opties ); 
+\end{lstlisting}
 
 \subsection*{Sidebars en widgets}
 
+\begin{lstlisting}[language=HTML]
+register_sidebar( array(
+	'name' => __( 'Hoofd Sidebar', 'mijntheme' ),
+	'id' => 'sidebar-1',
+	'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+	'after_widget' => "</aside>",
+	'before_title' => '<h3 class="widget-title">',
+	'after_title' => '</h3>',
+) );
+\end{lstlisting}
+
 \subsection*{Shortcodes}
+Om in een post of page de shortcode [coolfeature] te kunnen gebruiken:
+
+\lstinputlisting{code/shortcode.php}
 
 \clearpage
 
