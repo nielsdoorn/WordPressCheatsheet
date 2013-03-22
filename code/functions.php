@@ -5,7 +5,7 @@
 	
 	// sidebar registratie
 	register_sidebar( array(
-		'name' => __( 'Hoofd Sidebar', 'mijntheme' ),
+		'name' => 'Hoofd Sidebar',
 		'id' => 'sidebar-1',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
