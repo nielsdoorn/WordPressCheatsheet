@@ -1,7 +1,6 @@
 <?php
 	// menu registratie
 	register_nav_menu( "hoofdmenu", "Het hoofdmenu" );
-	register_nav_menu( "social", "Links naar social sites" );
 	
 	// sidebar registratie
 	register_sidebar( array(
